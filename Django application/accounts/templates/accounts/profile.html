@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block title %}{{user.username}}{% endblock %}
+{% block content %}
+<div class="container border border-success w-70 p-3 mt-3">
+  <div class="col-lg-4 w-40 ml-0 mr-0 mx-auto text-center">
+    {% if profile.image %}
+    <img
+      class="w-50 mb-10 mx-auto rounded d-block img-thumbnail"
+      src="{{profile.image.url}}"
+      alt=""
+    />
+    {% else %}
+    <img
+      class="w-50 mb-10 mx-auto rounded d-block img-thumbnail"
+      src=""
+      alt=""
+    />
+    {% endif %}
+    <h6 class="text-muted">{{user.first_name}} {{user.last_name}}</h6>
+    {% if user.is_superuser %}
+    <h5>
+      Go To
+      <a
+        class="text-decoration-underline text-success"
+        href="{% url 'admin:index' %}"
+        >Admin Page</a
+      >
+    </h5>
+    {%endif%}
+  </div>
+  <h3 class="text-muted text-decoration-underline">Personal Information</h3>
+
+  <div class="col m-3">
+    <p><span class="text-dark">Full Name: </span>{{user.get_full_name }}</p>
+    <p><span class="text-dark">Email address: </span>{{user.email }}</p>
+    <p><span class="text-dark">Username: </span>{{user.username }}</p>
+    <a href="{% url 'accounts:profile_edit' %}"
+      ><input type="submit" value="Change Info" class="btn btn-success"
+    /></a>
+  </div>
+  <h3 class="text-muted text-capitalize text-decoration-underline">
+    pervious predictions
+  </h3>
+  <div class="table-responsive">
+    <table
+      class="table table-striped table-bordered text-center text-capitalize table-hover"
+    >
+      <thead class="thead-light">
+        <tr class="table-success">
+          <th scope="col">ratio of Nitroge</th>
+          <th scope="col">ratio of Phosphorous</th>
+          <th scope="col">ratio of Potassium</th>
+          <th scope="col">temperature</th>
+          <th scope="col">humidity</th>
+          <th scope="col">ph value</th>
+          <th scope="col">rainfall</th>
+          <th scope="col">Suggested Crop</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for p in predict%}
+        <tr class="table-success">
+          <td>{{p.N}}</td>
+          <td>{{p.K}}</td>
+          <td>{{p.P}}</td>
+          <td>{{p.temperature}}</td>
+          <td>{{p.humidity}}</td>
+          <td>{{p.ph}}</td>
+          <td>{{p.rainfall}}</td>
+          <td>{{p.perviouspredictions}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+    {% if predict.has_other_pages %}      
+                        <div class="row">
+                            <div class="col">
+                              <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-center">
+                                        {% if predict.has_previous %}             
+                                            <li class="page-item "><a class="page-link" href="?page={{ predict.previous_page_number }}"> &laquo; </a></li>
+                                        {% endif %}
+                                        {% for i in predict.paginator.page_range  %}
+                                                  <li class="page-item " ><a class="page-link" href="?page={{i}}"><span>{{i}}</span></a></li>
+                                        {% endfor %}
+                                        {% if predict.has_next%}
+                                            <li class="page-item"><a class="page-link" href="?page={{ predict.next_page_number }}"> &raquo; </a></li>
+                                        {% endif %}
+                                  </ul>
+                                </nav>
+                                  </div>
+                                </div>
+                              
+                        {% endif %}
+    <a href="{%url 'services:crop_Suggestions'%}"
+      ><input type="submit" value="Make New Predictions" class="btn btn-succes"
+    /></a>
+  </div>
+</div>
+{% endblock content %}

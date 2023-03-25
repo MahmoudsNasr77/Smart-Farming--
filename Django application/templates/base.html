@@ -1,0 +1,149 @@
+{%load static%} {% load fontawesome_5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% fontawesome_5_static %}
+    <link href="{%static 'img/icon.png' %}" rel="icon" />
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!-- Google Web Fonts -->
+    <link href="{%static 'css/css2.css' %}" rel="stylesheet" />
+    <!-- Libraries Stylesheet -->
+    <link
+      href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static  'css/mainstyle.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-fluid px-5 d-none d-lg-block">
+      <div class="row gx-5 py-3 align-items-center">
+        <div class="col-lg-12">
+          <div class="d-flex align-items-center justify-content-center">
+            <a href="{%url 'home:home_render'%}" class="navbar-brand ms-lg-5">
+              <h1 class="m-0 display-4 text-success">
+                <span class="text-secondary">Smart</span>Farming
+              </h1>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
+      <a
+        href="{%url 'home:home_render'%}"
+        class="navbar-brand d-flex d-lg-none"
+      >
+        <h1 class="m-0 display-4 text-white">SmartFarming</h1>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto py-0">
+          <a
+            href="{%url 'home:home_render'%}"
+            class="nav-item nav-link text-light text-uppercase "
+            >Home</a
+          >
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >Services</a
+            >
+            <div class="dropdown-menu m-0">
+              <a
+                href="{%url 'services:crop_Suggestions'%}"
+                class="nav-item nav-link text-dark text-uppercase"
+                >Suggest Crop</a
+              >
+              <a
+                href="{%url 'services:crop_predictions'%}"
+                class="nav-item nav-link text-dark text-uppercase"
+                >Predict Water Level</a
+              >
+            </div>
+          </div>
+         
+          {% if user.is_authenticated%}
+          <div  class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              {{user.username}}
+            </a>
+            <div class="dropdown-menu m-0">
+              <a
+                href="{%url 'accounts:profile' %}"
+                class="nav-item nav-link text-dark text-uppercase"
+                >Profile</a
+              >
+              <a
+                href="{%url 'logout' %}"
+                class="nav-item nav-link text-dark text-uppercase"
+                >Logout</a
+              >
+            </div>
+          </div>
+          {%else%}
+          <a
+            href="{%url 'login' %}"
+            class="nav-item nav-link text-light text-uppercase"
+            >Login</a
+          >
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+    {% block content %} {%endblock content%}
+    <div class="container-fluid bg-footer bg-success text-white h-100 p-2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 pt-5 mb-5">
+                <h4 class="text-white text-center">Anonymes Team</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary py-3 back-to-top"
+      >{% fa5_icon 'arrow-up' %}</a
+    >
+
+    <!-- JavaScript Libraries -->
+    <script src="{%static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{%static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{%static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{%static  'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{%static  'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{%static  'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{%static  'js/min.js' %}"></script>
+  </body>
+</html>

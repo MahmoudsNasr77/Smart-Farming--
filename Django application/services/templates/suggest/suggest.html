@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Crop Suggestions{% endblock %}
+
+{% block content %}
+<script>
+    function validateForm() {
+      let x = document.forms["SuggestForm"]["ph"].value;
+      if (x >14) {
+        var error=document.getElementById("error");
+        error.style.display="block";
+        error.innerHTML="Ph Value Scale From 0 To 14";
+        return false;
+      }
+    }
+</script>
+<div class="container">
+    <div class="row">
+        <h1 class="text-center text-success text-uppercase p-2 ">Suggest  <span class="text-secondary">Crop </span>  To Your Soil</h1>    
+                <div class="col-12">
+                   <form name="SuggestForm" method="post" onsubmit="return validateForm()"   enctype="multipart/form-data">
+                    <h4 id="error" class=" alert alert-danger text-capitalize " role="alert" style="display:none" > </h4>
+                    <div class="alert alert-info" role="alert" style="display:block">
+                        This App is Based On Machine learning Algorithms
+                      </div>
+                    {% csrf_token %}
+                    <div class="form-group p-2 ">
+                        <input class="form-control" type="number" step="any" min="0.000000"  name="N" placeholder="ratio of Nitroge" required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control"  type="number" step="any" min="0.000000"  name="P"  placeholder="ratio of Phosphorous " required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control" type="number" step="any" min="0.000000"  name="K" placeholder="ratio of Potassium  " required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control" type="number" step="any" min="0.000000"  name="temperature" placeholder="temperature in degree Celsius " required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control" type="number" step="any"  min="0.000000" name="humidity" placeholder="humidity in %" required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control"  type="number" step="any" min="0.000000"  name="ph" placeholder="ph value (0.00000) " required>
+                    </div>
+                    <div class="form-group p-2 ">
+                        <input class="form-control" type="number" step="any" min="0.000000"  name="rainfall" placeholder="rainfall in mm " required>
+                    </div>
+                    <button type="submit" class="btn btn-success m-2">Suggest</button>                 
+                </form>
+                
+                    </div>
+                <div class="col-12 border border-2 border-success p-5 text-center mt-2 mb-2 h-100">
+                    {% if y_predict %}
+                    <h4 id="result" class="text-success text-capitalize  ">you should grow <span class="text-secondary" > {{y_predict}}</span> in your farm</h4>                    
+                    {% endif %}
+                </div>
+    </div>
+
+</div> 
+<div class="container">
+    <div class="row">
+        <div class="col ">
+                    <ul class="list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Summer Crops</li>
+                        <li class="list-group-item">Pigeonpeas</li>
+                        <li class="list-group-item">mothbeans</li>
+                        <li class="list-group-item">blackgram</li>
+                        <li class="list-group-item">mango</li>
+                        <li class="list-group-item">grapes</li>
+                        <li class="list-group-item">orange</li>
+                        <li class="list-group-item">papaya</li>
+                    </ul>
+            </div>
+            <div class="col ">
+                    <ul class=" list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Winter Crops</li>
+                        <li class="list-group-item">maize</li>
+                        <li class="list-group-item">pigeonpeas</li>
+                        <li class="list-group-item">lentil</li>
+                        <li class="list-group-item">pomegranate</li>
+                        <li class="list-group-item">grapes</li>
+                        <li class="list-group-item">orange</li>
+                    </ul>
+                </div>
+                <div class="col ">
+                    <ul class="list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Rainy Crops</li>
+                        <li class="list-group-item">rice</li>
+                        <li class="list-group-item">coconut</li>
+                        <li class="list-group-item">papaya</li>
+                    </ul>
+                </div>
+           
+        </div>
+    </div>
+</div>
+{%endblock content%}

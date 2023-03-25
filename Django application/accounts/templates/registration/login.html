@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+ {%load static%} 
+ {% load bootstrap4 %} 
+ {% block title %}Login{% endblock %}
+{% block body %}
+
+
+
+<div class="container border border-success border-2 p-5 ">
+  <div class="col-lg-4  ml-0 mr-0 mx-auto text-center">
+    <img class="w-50" src="{%static '/img/login.png' %}" />
+  </div>
+  <div class="row">
+    <div class="col-lg-4  ml-0 mr-0 mx-auto text-center">
+      <form method="post" class="mt-2" autocomplete="off">
+        {% csrf_token %}
+         {% bootstrap_form form %}
+        <a href="{% url 'home:home_render' %}">
+          <input
+            type="submit"
+            value="Login"
+            class="btn btn-success py-md-3 px-md-5 me-3 mt-3"/>
+      </a>
+      </form>
+      <p class="mt-2">New to Smart Farming?
+        <a
+          class="text-success font-weight-bold text-decoration-underline"
+          href="{% url 'accounts:signup' %}">
+          Sign up
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
