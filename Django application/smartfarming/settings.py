@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'services',
     'accounts',
 
+
 ]
 LOGIN_REDIRECT_URL = 'home:home_render'
 LOGOUT_REDIRECT_URL ='home:home_render'
@@ -81,14 +82,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smartfarming.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'smartFarmingDB',
+        'NAME': 'SmartFarmingDB',
         'USER': 'postgres',
         'PASSWORD': '2001',
         'HOST': 'localhost',
@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Egypt'
 
 USE_I18N = True
 
@@ -138,6 +138,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL='media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
 
 
 

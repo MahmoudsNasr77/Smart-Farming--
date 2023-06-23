@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from .forms import SignupForm, EditProfileForm, EditUserForm
 from .models import Profile
 from django.contrib import messages
-from services.models import croppredictions
+from services.models import croppredictions,waterpredictions
 
 
 def signup(request):
@@ -28,15 +28,30 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
+
+'''
+predictList = croppredictions.objects.filter(user=current_user)
+    paginator = Paginator(PredictList, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number
+'''
+
+
+
 def profile(request):
     profile = Profile.objects.get(user=request.user)
     current_user = request.user
-   
-    PredictList = croppredictions.objects.filter(user=current_user)
-    paginator = Paginator(PredictList, 3)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number) 
-    return render(request, 'accounts/profile.html', {'profile': profile, 'predict': page_obj})
+
+    cropPredictList = croppredictions.objects.filter(user=current_user)
+    croppaginator = Paginator(cropPredictList, 4)
+    page_number_crop = request.GET.get('page')
+    page_obj_crop = croppaginator.get_page(page_number_crop) 
+    
+    waterPredictList = waterpredictions.objects.filter(user=current_user).order_by('date','time')
+    waterpaginator = Paginator(waterPredictList, 4)
+    page_number_water = request.GET.get('page')
+    page_obj_water = waterpaginator.get_page(page_number_water) 
+    return render(request, 'accounts/profile.html', {'profile': profile, 'suggest': page_obj_crop,'predict':page_obj_water})
 def profile_edit(request):
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container-fluid p-0">
-    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="header-carousel" class="carousel slide carousel-fade-right-1" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="w-100" src="{%static 'img/1.jpg' %}" alt="Image" onContextMenu="return false;">
@@ -28,7 +28,7 @@
                     <div class="text-start p-5" style="max-width: 900px;">
                         <h3 class="text-white">Smart Farming</h3>
                         <h1 class="display-1 text-white mb-md-4">Predict Water To Your Soil</h1>
-                        <a href="{%url 'services:crop_predictions'%}" class="btn btn-success py-md-3 px-md-5 me-3">Explore</a>
+                        <a href="{%url 'services:water_predictions'%}" class="btn btn-success py-md-3 px-md-5 me-3">Explore</a>
                         
                     </div>
                 </div>
@@ -49,17 +49,21 @@
 </div>
 <div class="container-fluid about p-5 ">
         <div class="row ">
-            <div class="col-lg-6 ">
-                <div class="d-flex h-100 border border-5 border-success mt-90">
-                    <img class="img-fluid mt-auto mx-auto" src="{%static 'img/team.jpg' %}" onContextMenu="return false;">
+            <div class="col-lg-6">
+                
+                <div class="d-flex  border border-5 border-success">
+                    <img class="img-fluid mt-auto mx-auto " src="{%static 'img/papeer.jpeg' %}" onContextMenu="return false;">
+                </div>
+                <div class="d-flex  border border-5 border-success mt-2">
+                    <img class="img-fluid mt-auto mx-auto" src="{%static 'img/stra.jpeg' %}" onContextMenu="return false;">
                 </div>
             </div>
-            <div class="col-lg-6 ">
+            <div class="col-lg-6 text-capitalize">
                     <h6 class="text-success text-uppercase">About Us</h6>
                     <h1 class="display-5">We Are Anonymes Team </h1>
                 
                 <p class="text-muted">
-                    We Build Machine Learing Model based on Public dataset <a class="text-success" href="https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset">dataset1</a> 
+                    We Build <span class="text-secondary">2</span> Machine Learing Model first one is based on Public dataset <a class="text-success" href="https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset">dataset1</a> 
                     to Suggest Crop in The Soil  Using Most Of Supervised Machine Learning Classification Algorithms As  :
                 </p>
                     <ul>
@@ -69,15 +73,71 @@
                         <li> Naive Bayes</li>
                         <li> Random Forest</li>
                     </ul> 
-                    <p class="text-muted">And We Also Will Build Another Model to predict Water Level in Soil Based On data We Will 
-                        Gather It Using Iot Application We Will Build it As Second Feature That our Application Proivd It</p>
-                    <h6>Dataset1 Sample<h6>
-                    <img class="img-fluid img-responsive w-100" src="{%static 'img/data1.png' %}">
+                    <p class="text-muted">
+                     And The Sconde one we build internt of things (IOT) project to Collect data about 2 type of crops Pepper and Strawberry we moniter its behavoir of grow and water that it used <br>
+                     in this project we use 5 senors 
+                     <ol>
+                        <li>soil moisture sensor</li>
+                        <li>water flow sensor</li>
+                        <li>humidity and temperature sensor</li>
+                        <li>TSL2561 Luminosity Sensor</li>
+                        <li>ultrasonic sensor (water loss)</li>
+
+                     </ol>
+                    </p>
+                    we Use Most Of Supervised Machine Learning Regression Algorithms As  :
+                        <ul>
+                            <li> Decision Tree</li>
+                            <li> Random Forest</li>
+                        </ul> 
+                   
+                    <h6>crop Suggestions dateset Sample<h6>
+                    <img class="img-fluid img-responsive w-100 " src="{%static 'img/data1.jpg' %}">
+                    <h6 class="mt-3">water Prediction dateset Sample<h6>
+                        <img class="img-fluid img-responsive w-100 " src="{%static 'img/data2.jpg' %}">
              </div> 
             </div>
             </div>   
         </div> 
     </div>   
+</div>
+<div class="container">
+    <div class="row">
+        <h2 class="text-succes text-capitalize">this Information is based on <span class="text-secondary">Machine learning</span> Algorithms : </h2>
+        <div class="col-lg-4 ">
+                    <ul class="list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Summer Crops</li>
+                        <li class="list-group-item">Pigeonpeas</li>
+                        <li class="list-group-item">mothbeans</li>
+                        <li class="list-group-item">blackgram</li>
+                        <li class="list-group-item">mango</li>
+                        <li class="list-group-item">grapes</li>
+                        <li class="list-group-item">orange</li>
+                        <li class="list-group-item">papaya</li>
+                    </ul>
+            </div>
+            <div class="col-lg-4 ">
+                    <ul class=" list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Winter Crops</li>
+                        <li class="list-group-item">maize</li>
+                        <li class="list-group-item">pigeonpeas</li>
+                        <li class="list-group-item">lentil</li>
+                        <li class="list-group-item">pomegranate</li>
+                        <li class="list-group-item">grapes</li>
+                        <li class="list-group-item">orange</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 ">
+                    <ul class="list-group text-capitalize">
+                        <li class="list-group-item bg-success text-white">Rainy Crops</li>
+                        <li class="list-group-item">rice</li>
+                        <li class="list-group-item">coconut</li>
+                        <li class="list-group-item">papaya</li>
+                    </ul>
+                </div>
+           
+        </div>
+    </div>
 </div>
 
 

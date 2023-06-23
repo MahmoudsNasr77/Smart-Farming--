@@ -4,5 +4,5 @@ app_name = 'services'
 
 urlpatterns = [
     path('cropsuggestions', views.crop_Suggestions, name='crop_Suggestions'),
-    path('croppredictions', views.crop_predictions, name='crop_predictions'),
+    path('waterpredictions', views.water_predictions, name='water_predictions'),
 ]

@@ -1,18 +1,11 @@
 /********** Template CSS **********/
 :root {
-    --primary: #17B169;
+    --primary: #34AD54;
     --secondary: #FF9933;
     --light: #F6FFF2;
     --dark: #263A4F;
 }
-img {
-    pointer-events: none;
-}
 
-::selection {
-    color: white;
-    background: #FF9933;
-}
 .btn {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 1px;
@@ -74,9 +67,7 @@ img {
 .navbar-dark .navbar-nav .nav-link.active {
     background: var(--secondary);
 }
-.back-to-top:hover{
-    color: #F6FFF2;
-}
+
 @media (max-width: 991.98px) {
     .navbar-dark .navbar-nav .nav-link  {
         padding: 10px;
@@ -106,19 +97,28 @@ img {
     height: 3rem;
 }
 
+.bg-hero {
+    background: url(../img/carousel-1.jpg) top right no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 991.98px) {
+    .banner {
+        position: relative;
+        margin-top: -90px;
+        z-index: 1;
+    }
+}
+
 
 
 .bg-footer {
     background: linear-gradient(rgba(52, 173, 84, .7), rgba(52, 173, 84, .7)), url(../img/foot.png) center bottom no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 @media (min-width: 991.98px) {
     .bg-footer {
         margin-top: 90px !important;
     }
-}
-.facts{
-    background: url(../img/facts.jpg) fixed center bottom no-repeat;
-    background-size: cover;
 }

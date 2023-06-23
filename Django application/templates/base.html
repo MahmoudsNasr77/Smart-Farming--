@@ -23,9 +23,11 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{%static  'css/mainstyle.css' %}"
+      href="{%static  'css/base.css' %}"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
   </head>
   <body>
     <div class="container-fluid px-5 d-none d-lg-block">
@@ -33,7 +35,7 @@
         <div class="col-lg-12">
           <div class="d-flex align-items-center justify-content-center">
             <a href="{%url 'home:home_render'%}" class="navbar-brand ms-lg-5">
-              <h1 class="m-0 display-4 text-success">
+              <h1 class="m-0 display-4 text-success  ">
                 <span class="text-secondary">Smart</span>Farming
               </h1>
             </a>
@@ -41,12 +43,14 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg bg-success navbar-dark p-3">
+
+
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark p-3 ">
       <a
         href="{%url 'home:home_render'%}"
         class="navbar-brand d-flex d-lg-none"
       >
-        <h1 class="m-0 display-4 text-white">SmartFarming</h1>
+        <h1 class="m-0 display-4 text-white ">SmartFarming</h1>
       </a>
       <button
         class="navbar-toggler"
@@ -77,7 +81,7 @@
                 >Suggest Crop</a
               >
               <a
-                href="{%url 'services:crop_predictions'%}"
+                href="{%url 'services:water_predictions'%}"
                 class="nav-item nav-link text-dark text-uppercase"
                 >Predict Water Level</a
               >
@@ -85,10 +89,10 @@
           </div>
          
           {% if user.is_authenticated%}
-          <div  class="nav-item dropdown">
+          <div  class="nav-item dropdown ">
             <a
               href="#"
-              class="nav-link dropdown-toggle"
+              class="nav-link dropdown-toggle "
               data-bs-toggle="dropdown"
             >
               {{user.username}}
