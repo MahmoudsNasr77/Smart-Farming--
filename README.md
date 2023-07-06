@@ -1,4 +1,4 @@
-"# Smart-Farming"
+<h3>Smart Farming </h3>
 <img src="tempaltes/1.png">
 <img src="tempaltes/2.png">
 <img src="tempaltes/3.png">
