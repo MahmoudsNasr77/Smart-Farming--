@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 class croppredictions(models.Model):
-    date=models.DateField(auto_now=True)
-    time=models.TimeField(auto_now=True)
+    date=models.DateField(auto_now_add=True)
+    time=models.TimeField(auto_now_add=True)
     N = models.DecimalField(max_digits=15, decimal_places=7)
     P = models.DecimalField(max_digits=15, decimal_places=7)
     K = models.DecimalField(max_digits=15, decimal_places=7)
@@ -21,8 +21,8 @@ class croppredictions(models.Model):
         verbose_name_plural = "CropPredictions"
 
 class waterpredictions(models.Model):
-    date=models.DateField(auto_now=True)
-    time=models.TimeField(auto_now=True)
+    date=models.DateField(auto_now_add=True)
+    time=models.TimeField(auto_now_add=True)
     temperature = models.DecimalField(max_digits=15, decimal_places=7)
     humidity = models.DecimalField(max_digits=15, decimal_places=7)
     soilMoisture=models.DecimalField(max_digits=15, decimal_places=7)
@@ -35,4 +35,7 @@ class waterpredictions(models.Model):
         User, on_delete=models.CASCADE, related_name="UserwaterPredictions", null=True)
     class Meta:
         verbose_name_plural = "WaterPredictions"
+    def __str__(self):
+        return self.crop_type
+
 

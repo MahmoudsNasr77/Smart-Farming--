@@ -15,12 +15,11 @@
       alt=""
     />
     {% endif %}
-    <h6 class="text-muted">{{user.first_name}} {{user.last_name}}</h6>
+    <h5 class="text-muted">{{user.first_name}} {{user.last_name}}</h5>
     {% if user.is_superuser %}
     <h5>
-      Go To
       <a
-        class="text-decoration-underline text-success"
+        class="text-decoration-underline text-secondary"
         href="{% url 'admin:index' %}"
         >Admin Page</a
       >
@@ -33,6 +32,12 @@
     <p><span class="text-dark">Full Name: </span>{{user.get_full_name }}</p>
     <p><span class="text-dark">Email address: </span>{{user.email }}</p>
     <p><span class="text-dark">Username: </span>{{user.username }}</p>
+    {% if user.is_superuser %}
+    <p><span class="text-dark">Role: </span> Admin </p>
+    {%endif%}
+    <p><span class="text-dark">Date Joined: </span> {{user.date_joined}}
+    </p>
+
     <a href="{% url 'accounts:profile_edit' %}"
       ><input type="submit" value="Change Info" class="btn btn-success"
     /></a>

@@ -42,12 +42,12 @@ def profile(request):
     profile = Profile.objects.get(user=request.user)
     current_user = request.user
 
-    cropPredictList = croppredictions.objects.filter(user=current_user)
+    cropPredictList = croppredictions.objects.filter(user=current_user).order_by('-date')
     croppaginator = Paginator(cropPredictList, 4)
     page_number_crop = request.GET.get('page')
     page_obj_crop = croppaginator.get_page(page_number_crop) 
     
-    waterPredictList = waterpredictions.objects.filter(user=current_user).order_by('date','time')
+    waterPredictList = waterpredictions.objects.filter(user=current_user).order_by('-date')
     waterpaginator = Paginator(waterPredictList, 4)
     page_number_water = request.GET.get('page')
     page_obj_water = waterpaginator.get_page(page_number_water) 

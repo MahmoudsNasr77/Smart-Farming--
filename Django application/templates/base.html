@@ -62,25 +62,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto py-0">
-          <a
+       
+          <a {% if request.path == '/' %} class="nav-item nav-link text-light text-uppercase bg-secondary "{% endif %}
             href="{%url 'home:home_render'%}"
             class="nav-item nav-link text-light text-uppercase "
             >Home</a
           >
           <div class="nav-item dropdown">
             <a
-              href="#"
+              {% if request.path == '/services/waterpredictions' or request.path == '/services/cropsuggestions' %} class="nav-item nav-link text-light text-uppercase bg-secondary"{% endif %}    
               class="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
               >Services</a
             >
             <div class="dropdown-menu m-0">
-              <a
+              <a 
+              {% if request.path == '/services/cropsuggestions' %} class="nav-item nav-link text-light text-uppercase bg-secondary"{% endif %}
+            
                 href="{%url 'services:crop_Suggestions'%}"
                 class="nav-item nav-link text-dark text-uppercase"
                 >Suggest Crop</a
               >
               <a
+              {% if request.path == '/services/waterpredictions' %} class="nav-item nav-link text-light text-uppercase bg-secondary"{% endif %}
+
                 href="{%url 'services:water_predictions'%}"
                 class="nav-item nav-link text-dark text-uppercase"
                 >Predict Water Level</a
@@ -91,6 +96,7 @@
           {% if user.is_authenticated%}
           <div  class="nav-item dropdown ">
             <a
+            {% if request.path == '/accounts/profile' %} class="nav-item nav-link text-light text-uppercase bg-secondary"{% endif %}
               href="#"
               class="nav-link dropdown-toggle "
               data-bs-toggle="dropdown"
@@ -99,6 +105,8 @@
             </a>
             <div class="dropdown-menu m-0">
               <a
+              {% if request.path == '/accounts/profile' %} class="nav-item nav-link text-light text-uppercase bg-secondary"{% endif %}
+
                 href="{%url 'accounts:profile' %}"
                 class="nav-item nav-link text-dark text-uppercase"
                 >Profile</a

@@ -1,11 +1,23 @@
 {% extends "base_generic.html" %}
 {% load bootstrap4 %} 
+{%load static%} 
+
 {% block title %}Signup{% endblock %}
-asdfg
 {% block body %}
+
 <div class="container border border-success border-2 w-70 p-5">
+  
   <div class="row">
-    <div class="col-12">
+    
+    <div class="col-lg-6 ml-0 mr-0 mx-auto text-center">
+      <img class="w-100" src="{%static '/img/up.jpg' %}" />
+    </div>
+    <div class="col-6">
+      <a href="{%url 'home:home_render'%}" class="navbar-brand ms-lg-5">
+        <h1 class="m-0 display-4 text-success text-center">
+          <span class="text-secondary">Smart</span>Farming
+        </h1>
+      </a>
       {% if messages %}
       <ul class="messages">
           {% for message in messages %}
@@ -22,6 +34,7 @@ asdfg
   </form>
 
 </div>
+
 </div>
 </div>
 {% endblock body%}

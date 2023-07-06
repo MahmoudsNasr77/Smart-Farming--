@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from joblib import load
 from services.models import croppredictions,waterpredictions
@@ -53,4 +53,5 @@ def water_predictions(request):
         predict.save()
         context = {"y_predict": round(y_predict[0],2), "predict": predict,'plant':myoption}
         return render(request, 'predict/predict.html', context)
-    return (render(request, 'predict/predict.html'))
+    else:
+        return (render(request, 'predict/predict.html'))

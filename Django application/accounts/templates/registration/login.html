@@ -6,13 +6,19 @@
 
 
 
-<div class="container border border-success border-2 p-5 ">
-  <div class="col-lg-4  ml-0 mr-0 mx-auto text-center">
-    <img class="w-50" src="{%static '/img/login.png' %}" />
-  </div>
+<div class="container border border-success border-2  ">
+
   <div class="row">
-    <div class="col-lg-4  ml-0 mr-0 mx-auto text-center">
-      <form method="post" class="mt-2" autocomplete="off">
+    <div class="col-lg-6  mx-auto text-center">
+      <img class="w-100 h-100 logg" src="{%static '/img/in.jpg' %}" />
+    </div>
+    <div class="col-lg-6  m-5 mx-auto text-center ">
+      <a href="{%url 'home:home_render'%}" class="navbar-brand ms-lg-5">
+        <h1 class="m-0 display-4 text-success text-center">
+          <span class="text-secondary">Smart</span>Farming
+        </h1>
+      </a>
+      <form method="post" class="mt-5" autocomplete="off">
         {% csrf_token %}
          {% bootstrap_form form %}
         <a href="{% url 'home:home_render' %}">
@@ -22,7 +28,7 @@
             class="btn btn-success py-md-3 px-md-5 me-3 mt-3"/>
       </a>
       </form>
-      <p class="mt-2">New to Smart Farming?
+      <p class="mt-3">New to Smart Farming?
         <a
           class="text-success font-weight-bold text-decoration-underline"
           href="{% url 'accounts:signup' %}">
