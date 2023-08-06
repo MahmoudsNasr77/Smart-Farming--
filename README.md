@@ -8,5 +8,4 @@
 <img src="tempaltes/8.png">
 <img src="tempaltes/9.png">
 <img src="tempaltes/10.png">
-<img src="tempaltes/11.png">
 
